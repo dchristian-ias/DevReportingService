@@ -1,49 +1,22 @@
 var express         = require('express'),
     router          = express.Router(),
-    cors            = require('cors'),
-    creative			  = require('../responses/creative'),
-    viewability			= require('../responses/viewability');
+    path 						= require('path'),
+    fs 							= require('fs');
 
 // Routes GET
 // ------------------------------------------------------------------
 
-router.get('/teams/4436/pub/viewability', function(request, response) {
-	var data,
-			query = request.query;
+router.get('/teams/:team_id/pub/*', function(req, res) {
+	
+	var responsePath = path.join("./responses/teams", req.params.team_id, "pub", req.params[0], "response.json");
+	
+	fs.readFile(responsePath, 'utf8', function (err,data) {
+  	if (err) {
+  		res.status(400);
+  	}
+  		res.json(data)
+	});
 
-		// TODO -> String array, JSON PARSE ERROR
-		groups = query.groups.replace(/[\[\]]/g, '');
-		groups = groups.split(',');
-
-		if(groups[0] === 'creative') {
-			data = creative;
-		} else {
-			data = viewability;
-		}
-
-  response.json(data);
-});
-
-
-
-// Routes POST
-// ------------------------------------------------------------------
-
-router.post('/teams/4436/pub/viewability', function(request, response) {
-	var data,
-			query = request.query;
-
-		// TODO -> String array, JSON PARSE ERROR
-		groups = query.groups.replace(/[\[\]]/g, '');
-		groups = groups.split(',');
-
-		if(groups[0] === 'creative') {
-			data = creative;
-		} else {
-			data = viewability;
-		}
-
-  response.json(data);
 });
 
 module.exports = router;
