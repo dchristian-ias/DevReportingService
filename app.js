@@ -13,7 +13,7 @@ var port,
   app.use(cors(corsOptions));
   app.use(bodyParser.urlencoded({ extended: true }));
   app.use(bodyParser.json());
-
+  
 
 // REGISTER ROUTES
 // ------------------------------------------------------------------

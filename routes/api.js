@@ -1,5 +1,6 @@
-var express         = require('express'),
-    router          = express.Router(),
+var app         		= require('express'),
+    router          = app.Router(),
+    utils 					= require('../utils/utils'),
     path 						= require('path'),
     fs 							= require('fs');
 
@@ -7,10 +8,10 @@ var express         = require('express'),
 // ------------------------------------------------------------------
 
 router.get('/teams/:team_id/pub/*', function(req, res) {
-	
-	var responsePath = path.join("./responses/teams", req.params.team_id, "pub", req.params[0], "response.json");
-	
-	fs.readFile(responsePath, 'utf8', function (err,data) {
+
+	var responsePath = utils.getResponsePath(req.params.team_id, req.params[0]);
+ 
+	fs.readFile(responsePath, 'utf8', function (err, data) {
   	if (err) {
   		res.status(400);
   	}
