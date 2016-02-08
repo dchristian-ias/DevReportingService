@@ -23,5 +23,5 @@ This service will return mock data for team 3690, and all currently supported
 
 ## Customization
 
-All mock responses added inside the 'responses/custom' directory will override the default responses setup by this server. To properly set this up, simply copy the 'teams' directory into the 'custom' directory, and customize your JSON responses as desired. These responses will now override the default responses setup by this server.
+All mock responses added inside '~/mockRs/responses' directory will override the default responses set by this server.
 

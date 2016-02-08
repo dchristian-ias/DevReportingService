@@ -13,7 +13,7 @@ router.get('/teams/:team_id/pub/*', function(req, res) {
 
 	fs.readFile(responsePath, 'utf8', function (err, data) {
   	if (err) {
-  		res.status(400);
+  		res.status(404);
   	}
   		data = JSON.parse(data);
   		res.json(data)
