@@ -13,5 +13,6 @@ $ npm install
 Start Server:
 
 ```
-$ node ./app.js localhost 3000
+$ nodemon ./app.js localhost 3000
 ```
+
