@@ -1,23 +1,23 @@
-var app         		= require('express'),
-    router          = app.Router(),
-    utils 					= require('../utils/utils'),
-    path 						= require('path'),
-    fs 							= require('fs');
+var app = require('express'),
+    router = app.Router(),
+    utils = require('../utils/utils'),
+    path = require('path'),
+    fs = require('fs');
 
 // Routes GET
 // ------------------------------------------------------------------
 
 router.get('/teams/:team_id/pub/*', function(req, res) {
 
-	var responsePath = utils.getResponsePath(req.params.team_id, req.params[0]);
+    var responsePath = utils.getResponsePath(req.params.team_id, req.params[0]);
 
-	fs.readFile(responsePath, 'utf8', function (err, data) {
-  	if (err) {
-  		res.status(404);
-  	}
-  		data = JSON.parse(data);
-  		res.json(data)
-	});
+    fs.readFile(responsePath, 'utf8', function(err, data) {
+        if (err) {
+            res.status(404);
+        }
+        data = JSON.parse(data);
+        res.json(data)
+    });
 
 });
 
