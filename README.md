@@ -18,10 +18,10 @@ $ nodemon ./app.js localhost 3000
 
 ## API
 
-This service will return mock data for team 3690, and all currently supported
+This service will return mock data for team 3690, for all currently supported
 [Publisher endpoints](https://util01.303net.net/confluence/display/ehr/Publisher+Endpoints).
 
 ## Customization
 
-All mock responses added inside '~/mockRs/responses' directory will override the default responses set by this server.
+All mock responses added inside '~/rs-mock/responses' directory will override the default responses set by this server.
 
