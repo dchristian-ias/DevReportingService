@@ -1,8 +1,10 @@
 var app = require('express'),
     router = app.Router(),
+    moment = require('moment'),
     utils = require('../utils/utils'),
     path = require('path'),
-    fs = require('fs');
+    fs = require('fs'),
+    ejs = require('ejs');
 
 // Routes GET
 // ------------------------------------------------------------------
@@ -15,8 +17,11 @@ router.get('/teams/:team_id/pub/*', function(req, res) {
         if (err) {
             res.status(404);
         }
-        data = JSON.parse(data);
-        res.json(data)
+        // Run response through EJS renderer so custom responses can utilize EJS templating
+        var response = ejs.render(data);
+        response = JSON.parse(response);
+
+        res.json(response);
     });
 
 });
