@@ -4,7 +4,9 @@ var fs = require('fs'),
 
 module.exports = (function() {
 
-    var customResponsePath = os.homedir() + '/rs-mock/responses',
+    var defaultResponePath = path.dirname(require.main.filename) + '/responses',
+
+        customResponsePath = os.homedir() + '/rs-mock/responses',
 
         hasCustomResponses = function() {
             return fs.existsSync(customResponsePath);
@@ -16,12 +18,18 @@ module.exports = (function() {
             } else {
                 return path.join("./responses/teams", teamId, "pub", params, "response.json");
             }
+        },
+
+        responsePath = function() {
+            return hasCustomResponses() ? customResponsePath : defaultResponePath;
         };
 
     return {
         getResponsePath: getResponsePath,
         customResponsePath: customResponsePath,
-        hasCustomResponses: hasCustomResponses
+        defaultResponePath: defaultResponePath,
+        hasCustomResponses: hasCustomResponses,
+        responsePath: responsePath
     };
 
 }());

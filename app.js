@@ -28,10 +28,7 @@ app.use('/reportingservice/api', apiRoutes);
 // ------------------------------------------------------------------
 app.listen(port);
 
-var defaultResponePath = path.resolve(__dirname) + '/responses';
-var responsePath = utils.hasCustomResponses() ? utils.customResponsePath : defaultResponePath;
-
 console.log('Magic happens on port ' + port);
-console.log('Mock responses being pulled from: ' + responsePath);
+console.log('Mock responses being pulled from: ' + utils.responsePath());
 
 module.exports = app;
